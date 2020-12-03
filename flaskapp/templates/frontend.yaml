@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: {{.Values.frontendappname }}
-  name: backend
+    app: frontend
+  name: frontend
 spec:
-  replicas: 1
+  replicas: {{.Values.React.podCount }}
   selector:
     matchLabels:
       app: frontend
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: frontend
     spec:
       containers:
-      - image: {{.Values.frontendimagename}}
-        name: frontend
+      - image: {{.Values.React.image }}
+        name: {{.Values.React.appName }}

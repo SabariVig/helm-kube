@@ -1,21 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  creationTimestamp: null
   labels:
-    app: {{.Values.backendappname }}
+    app: backend
   name: backend
 spec:
-  replicas: 1
+  replicas: {{.Values.Python.podCount }}
   selector:
     matchLabels:
-      app: backend 
+      app: backend
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: backend
     spec:
       containers:
-      - image: {{.Values.backendimage}}
-        name: flaskapp
+      - image: {{.Values.Python.image }}
+        name: {{.Values.Python.appName }}
