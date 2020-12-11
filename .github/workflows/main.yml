@@ -9,7 +9,8 @@ jobs:
   deploy:
     runs-on: ubuntu-18.04
     defaults:
-      working-directory: flaskapp
+      run:
+        working-directory: flaskapp
     steps:
       - uses: actions/checkout@v2
 
